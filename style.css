@@ -1,0 +1,181 @@
+.configurator {
+    padding: 5px;
+}
+
+.configurator input {
+    cursor: pointer;
+    margin: 0 5px 0 0!important;
+}
+
+.configurator input:disabled ~ label{
+    color: #A9A9A9;
+}
+
+.configurator__heading-label {
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.configurator__head-control-elem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+}
+
+.configurator__head-input {
+    margin: 0 !important;
+}
+
+.configurator__head-input:checked ~ label {
+    font-weight: 600 !important;
+}
+
+.configurator__head-label {
+    margin: 0;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+
+
+/* форма выбора */
+.configurator__form {
+    padding: 5px;
+}
+
+.configurator__form-elem {
+    margin: 8px 0 25px;
+}
+
+.configurator__control-elem.select{
+    padding: 5px;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ededed;
+    color: #696969;
+    cursor: pointer;
+}
+
+.configurator__control-elem.input {
+    margin: 0 5px 0 0;
+}
+
+.configurator__input-container {
+    margin: 0 !important;
+    display: flex;
+    align-items: center;
+}
+
+.configurator__input-container input:checked ~ label {
+    font-weight: normal;
+}
+
+.configurator__label-for-input {
+    font-weight: 300;
+    margin: 0;
+    cursor: pointer;
+}
+
+.configurator__show-button, .configurator__reset-button {
+    padding: 5px 30px;
+    border: 0;
+    border-radius: 3px;
+    margin: 0 10px 0 0;
+    text-transform: uppercase;
+    transition: box-shadow 0.3s;
+}
+
+@media (max-width: 470px) {
+    .configurator__show-button, .configurator__reset-button {
+        width: 100%;
+    }
+}
+
+@media(hover: hover) and (pointer: fine) {
+    .configurator__reset-button:hover, .configurator__show-button:hover {
+        box-shadow: 1px 1px 6px 0px #838383;
+    }
+}
+
+
+.configurator__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+    
+.configurator__show-button {
+    background-color: #008f86;
+    color: #fff;
+}
+
+.configurator__reset-button {
+    background-color: #f2f2f2;
+}
+
+
+
+/* блок товаров с предоставлением результата */
+.configurator__results {
+    overflow: hidden;
+    padding-bottom: 1px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 0 30px 0;
+}
+
+
+/* блок с товаром */
+.results-item {
+    width: 33.3%;
+    height: auto;
+    float: left;
+    border: 1px solid #ededed;
+    margin-bottom: -1px;
+    text-align: center;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 766.9px) {
+    .results-item {
+        width: 50%;
+    } 
+}
+
+@media (max-width: 470px) {
+    .results-item {
+        width: 100%;
+    } 
+}
+
+.results-item__img {
+    margin: 0 auto;
+    width: 150px;
+    overflow: hidden;
+    flex: 0 1 100%;
+}
+
+.results-item__img img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.results-item__link {
+    padding: 3px 0;
+    background-color: #008f86;
+    width: 150px;
+    border-radius: 3px;
+    color: #fff !important;
+    text-decoration: none !important;
+    margin: 0 auto;
+}
+
+@media(hover: hover) and (pointer: fine) {
+    .results-item__link:hover {
+        background-color: #9f0412;
+    }
+}

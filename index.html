@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="site.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="body__content">
+        <div class="product-page j-product-page">
+            <div class="i-container">
+                <div class="product-page__wrapper j-product-page-wrapper j-base-page-container">
+                    <div class="product-page__content j-product-page-content">
+                        <div class="product-page-content page-content">
+                            <div class="page-content-text">
+                                <div class="product-page-content__texts">
+                                    <div class="product-page__chapter product-page-chapter j-base-page-section">
+                                        <div class="h2-panel__upper">
+                                            <div class="h2-panel j-h2-panel">
+                                                <div class="h2-panel__wrapper">
+                                                    <div class="h2-panel__tbl">
+                                                        <div class="h2-panel__text"><h2>Конфигуратор</h2></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>    
+
+                                        <div class="product-page-chapter__content j-base-page-section-content downloadable downloaded">
+
+
+                                        <style>
+                                            [v-cloak] {
+                                                display: none;
+                                            }
+                                        </style>
+
+                                        <section class="configurator" id="App" v-cloak>
+                                            <header class="configurator__head">
+                                                
+                                                <label class="configurator__heading-label">Назначение:</label> <br>
+
+                                                <p class="configurator__input-container" v-for="(elem, index) in configuratorData">
+                                                    <input class="configurator__head-input"
+                                                        type="radio"
+                                                        name="deviseTypeSelect"
+                                                        @change="appointment = elem"
+                                                        :value="elem.name"
+                                                        :id="'deviseTypeSelect-' + index">
+
+                                                        <label class="configurator__head-label"
+                                                            :for="'deviseTypeSelect-' + index"
+                                                            :key="index"> 
+                                                            {{elem.label}}
+                                                        </label>
+                                                    </input>
+                                                    </br>
+                                                </p>
+                                                <hr>
+
+                                            </header>
+                                    
+                                            <div class="configurator__form">
+                                                <form v-if="appointment.length !== 0">
+
+                                                    <div class="configurator__form-elem" v-for="formElem in arrayToDraw">
+
+                                                        <div class="configurator__select-item" v-if="formElem.values.length > 3">
+
+                                                            <label :for=formElem.name> {{formElem.name}}</label>
+
+                                                            <br>
+
+                                                            <p class="configurator__select-container">
+                                                                <select class="configurator__control-elem select" :name=formElem.name @change="getResult(formElem.name, $event.target.value)">
+                                                                    <option value="">-- {{formElem.name}}  --</option>
+                                                                    <option v-bind:disabled="blockUnsuitableElements(formElem.name, value)" v-for="value in formElem.values" :value=value > {{value}} </option>
+                                                                </select>
+                                                            </p>
+
+                                                        </div>
+
+
+                                                        <div class="configurator__select-item" v-else>
+
+                                                            <label> {{formElem.name}}  </label>
+
+                                                            <br>
+
+                                                            <p class="configurator__input-container" v-for="(value, index) in formElem.values">
+                                                                <input class="configurator__control-elem input"
+                                                                       type="radio"
+                                                                       :name="formElem.name"
+                                                                       :value="value"
+                                                                       :id="`${formElem.name}-${index}`"
+                                                                       @input="getResult(formElem.name, value)"
+                                                                       v-bind:disabled="blockUnsuitableElements(formElem.name, value)"/>
+                                                            
+                                                                <label class="configurator__label-for-input" 
+                                                                       :for="`${formElem.name}-${index}`"> {{value}}
+                                                                </label>
+                                                            </p>
+
+                                                        </div>
+
+                                                    </div>
+                                
+                                                </form>
+
+                                            </div>
+
+                                            <div class="configurator__results">
+
+                                                <div class="results-item" v-for="item in searchResults">
+                                                    <div class="results-item__img">
+                                                        <img :src="item.img" alt="">
+                                                    </div>
+                                                    <div class="results-item__label">
+                                                        <p> <strong v-html="item.label"> </strong> </p>
+                                                    </div>
+                                                    <a class="results-item__link" target="_blank" :href="item.link">Подробнее</a>
+                                                </div>
+
+                                            </div>
+
+                                            <footer class="configurator__footer">
+
+                                                <div class="configurator__buttons">
+
+                                                    <button class="configurator__show-button"  v-if="appointment.length != 0 && searchResults.length === 0" @click="showResult()">Показать</button>
+                                                    <button class="configurator__reset-button" v-if="appointment.length != 0" @click="reset()">Очистить</button>
+
+                                                </div>
+
+                                            </footer>
+
+                                        </section>
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    
+    <script src="data.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
